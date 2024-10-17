@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的應用</title>
+  </head>
+  <body>
+    <h1>數據提交</h1>
+    <input type="text" id="inputField" placeholder="輸入數據" />
+    <button id="submitButton">提交</button>
+
+    <script>
+      document.getElementById("submitButton").addEventListener("click", () => {
+        const input = document.getElementById("inputField").value;
+        fetch("/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ data: input }),
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            alert(data); // 顯示伺服器的回應
+            document.getElementById("inputField").value = ""; // 清空輸入框
+          })
+          .catch((error) => {
+            console.error("錯誤:", error);
+          });
+      });
+    </script>
+  </body>
+</html>
