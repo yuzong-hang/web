@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // 解析 JSON 請求
 app.use(express.json());
@@ -17,5 +17,5 @@ app.post("/submit", (req, res) => {
 
 // 啟動伺服器
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
