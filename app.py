@@ -17,7 +17,7 @@ def process_text():
     data = request.json
     user_input = data.get('text')
     if not user_input:
-        return jsonify({"error": "No text provided"}), 400
+        return jsonify({"response": "No text provided"}), 400
 
     best_match, best_score = None, 0
     for item in faq_data:
