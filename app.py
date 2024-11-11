@@ -24,7 +24,7 @@ def process_text():
         question = item["question"]
         score = fuzz.ratio(user_input, question)
         if score > best_score:
-            best_score, best_match = score, item["answer"]
+            best_score, best_match = score, item["response"]
 
     if best_score >= 70:
         response = best_match
