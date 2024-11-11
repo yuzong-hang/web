@@ -24,7 +24,7 @@ def process_text():
         question = item["question"]
         score = fuzz.ratio(user_input, question)
         if score > best_score:
-            best_score, best_match = score, item["response"]
+            best_score, best_match = score, item["answer"]
 
     if best_score >= 70:
         response = best_match
@@ -33,7 +33,8 @@ def process_text():
     else:
         response = "抱歉，我不太理解您的意思。"
 
-    return jsonify({"response": response})
+    return jsonify({"response": response}), 200  # 確保返回 JSON 格式的字典
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
