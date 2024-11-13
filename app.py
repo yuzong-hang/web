@@ -40,11 +40,10 @@ def process_text():
         if score > best_score:
             best_score, best_match = score, item["response"]
             best_question = item["question"]
-
     if best_score >= 70:
         response = best_match
     elif best_score >= 50:
-        response = f"您是指「{best_question}」嗎？"
+        response = f"您是指「{best_question}」嗎？\n" + best_match
     else:
         response = "抱歉，我不太理解您的意思。"
 
